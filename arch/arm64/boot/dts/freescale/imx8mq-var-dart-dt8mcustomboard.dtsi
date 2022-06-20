@@ -73,6 +73,12 @@
 			gpios = <&gpio4 18 GPIO_ACTIVE_HIGH>;
 			linux,default-trigger = "mmc0";
 		};
+
+		user {
+			label = "UserLED";
+			gpios = <&gpio1 25 GPIO_ACTIVE_LOW>;
+			linux;
+		};
 	};
 
 	pcie0_refclk: pcie0-refclk {
