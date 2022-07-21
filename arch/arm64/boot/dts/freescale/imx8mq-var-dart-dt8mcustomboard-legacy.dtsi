@@ -8,35 +8,11 @@
 #include "imx8mq-var-dart-dt8mcustomboard.dtsi"
 
 / {
-	gpio-keys {
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_gpio_keys>;
-
-		up {
-			gpios = <&gpio4 18 GPIO_ACTIVE_LOW>;
-		};
-
-		down {
-			gpios = <&gpio4 15 GPIO_ACTIVE_LOW>;
-		};
-
-		home {
-			gpios = <&gpio4 13 GPIO_ACTIVE_LOW>;
-		};
-
-		back {
-			gpios = <&gpio4 6 GPIO_ACTIVE_LOW>;
-		};
-	};
 
 	leds {
 		emmc {
 			gpios = <&gpio4 17 GPIO_ACTIVE_HIGH>;
 		};
-	};
-
-	can0_osc: can0_osc {
-		clock-frequency = <20000000>;
 	};
 
 	/delete-node/ extcon_usb1;
@@ -52,10 +28,6 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pcie1>;
 	reset-gpio = <&gpio1 28 GPIO_ACTIVE_LOW>;
-};
-
-&usb_dwc3_0 {
-	extcon = <&typec_ptn5150>;
 };
 
 &iomuxc {

@@ -170,7 +170,6 @@
 	snps,dis-u1-entry-quirk;
 	snps,dis-u2-entry-quirk;
 	status = "okay";
-	extcon = <&extcon_usb1>;
 };
 
 &usb3_phy1 {
