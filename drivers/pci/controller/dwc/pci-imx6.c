@@ -1217,13 +1217,17 @@ static void imx6_pcie_deassert_core_reset(struct imx6_pcie *imx6_pcie)
 		regmap_update_bits(imx6_pcie->iomuxc_gpr, val,
 				   IMX8MQ_GPR_PCIE_CLK_REQ_OVERRIDE_EN,
 				   IMX8MQ_GPR_PCIE_CLK_REQ_OVERRIDE_EN);
+		dev_info(dev, "Finished Regmaps\n");
 
 		if (imx6_pcie->drvdata->flags & IMX6_PCIE_FLAG_SUPPORTS_L1SS) {
+		dev_info(dev, "Inside If\n");
 			/*
 			 * Configure the CLK_REQ# high, let the L1SS
 			 * automatically controlled by HW later.
 			 */
 			reset_control_deassert(imx6_pcie->clkreq_reset);
+
+		dev_info(dev, "Reset Control Deassert Finished\n");
 			/*
 			 * Configure the L1 latency of rc to less than 64us
 			 * Otherwise, the L1/L1SUB wouldn't be enable by ASPM.
@@ -1236,7 +1240,9 @@ static void imx6_pcie_deassert_core_reset(struct imx6_pcie *imx6_pcie)
 			writel(val, pci->dbi_base + SZ_1M +
 					IMX8MQ_PCIE_LINK_CAP_REG_OFFSET);
 			dw_pcie_dbi_ro_wr_dis(pci);
+		dev_info(dev, "Finished writes\n");
 		}
+		dev_info(dev, "Finished CASE\n");
 		break;
 	case IMX8MP:
 		if (phy_power_on(imx6_pcie->phy) < 0)
