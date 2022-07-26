@@ -340,6 +340,7 @@ static inline void dw_pcie_dbi_ro_wr_en(struct dw_pcie *pci)
 
 	reg = PCIE_MISC_CONTROL_1_OFF;
 	val = dw_pcie_readl_dbi(pci, reg);
+	dev_info(pci->dev, "Finished dw_pcie_readl_dbi\n");
 	val |= PCIE_DBI_RO_WR_EN;
 	dw_pcie_writel_dbi(pci, reg, val);
 }
