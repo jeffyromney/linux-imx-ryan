@@ -1233,12 +1233,19 @@ static void imx6_pcie_deassert_core_reset(struct imx6_pcie *imx6_pcie)
 			 * Otherwise, the L1/L1SUB wouldn't be enable by ASPM.
 			 */
 			dw_pcie_dbi_ro_wr_en(pci);
+
+		dev_info(dev, "Finished dw_pcie_dbi_ro_wr_en(pci)\n");
+
 			val = readl(pci->dbi_base + SZ_1M +
 					IMX8MQ_PCIE_LINK_CAP_REG_OFFSET);
+		dev_info(dev, "Finished readl\n");
 			val &= ~PCI_EXP_LNKCAP_L1EL;
+		dev_info(dev, "Finished val &=\n");
 			val |= IMX8MQ_PCIE_LINK_CAP_L1EL_64US;
+		dev_info(dev, "Finished val |=\n");
 			writel(val, pci->dbi_base + SZ_1M +
 					IMX8MQ_PCIE_LINK_CAP_REG_OFFSET);
+		dev_info(dev, "Finished writel\n");
 			dw_pcie_dbi_ro_wr_dis(pci);
 		dev_info(dev, "Finished writes\n");
 		}
